@@ -11,8 +11,6 @@ import java.util.List;
 public class BookDaoImpl {
     public List<Book> getAllBooks(){
         Session session = FactoryConfiguration.getInstance().getSession();
-//        List<Book> fromBook = session.createQuery("from Book where publicationYear>2010").getResultList();
-//        return fromBook;
         Query query = session.createQuery("from Book b where b.publicationYear > :Year");
         query.setParameter("Year",2010);
         return query.getResultList();
