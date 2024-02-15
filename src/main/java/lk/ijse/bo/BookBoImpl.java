@@ -21,4 +21,17 @@ public class BookBoImpl {
 
     }
 
+   public boolean q2(int id){
+        return bookDao.q2(id);
+   }
+
+   public ArrayList<Double> getBookPrice(){
+       ArrayList<Double> arrayList = new ArrayList<>();
+       List<Book> book = bookDao.getBook();
+       for (Book b:book) {
+         arrayList.add(b.getPrice());
+       }
+       return arrayList;
+   }
+
 }

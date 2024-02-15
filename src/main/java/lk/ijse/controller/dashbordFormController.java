@@ -3,18 +3,23 @@ package lk.ijse.controller;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import lk.ijse.bo.AuthorBoImpl;
 import lk.ijse.bo.BookBoImpl;
 import lk.ijse.confi.FactoryConfiguration;
 import lk.ijse.dto.BookDTO;
+import lk.ijse.entity.Author;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class dashbordFormController {
 
     @FXML
     private JFXTextArea txtArea;
     BookBoImpl bookBo = new BookBoImpl();
+    AuthorBoImpl authorBo=new AuthorBoImpl();
 
     @FXML
     void btn1OnAction(ActionEvent event) {
@@ -26,7 +31,13 @@ public class dashbordFormController {
 
     @FXML
     void btn2OnAction(ActionEvent event) {
-
+        txtArea.clear();
+        boolean b = bookBo.q2(1);
+        if(b){
+            txtArea.appendText("update values");
+        }else {
+            new Alert(Alert.AlertType.ERROR,"cant update values");
+        }
     }
 
     @FXML
@@ -36,12 +47,23 @@ public class dashbordFormController {
 
     @FXML
     void btn4OnAction(ActionEvent event) {
-
+        txtArea.clear();
+        ArrayList<Double> arrayList = bookBo.getBookPrice();
+        int x=arrayList.size();
+        int total=0;
+        for (int i = 0; i <arrayList.size(); i++) {
+            total+=arrayList.get(i);
+        }
+        txtArea.appendText("Average"+(total/x));
     }
 
     @FXML
     void btn5OnAction(ActionEvent event) {
-
+        txtArea.clear();
+        List<Author> allAuthor = authorBo.getAllAuthor();
+        for (int i = 0; i <allAuthor.size(); i++) {
+            txtArea.appendText(allAuthor.get(i).getName() +" -- "+ allAuthor.get(i).getBooks().size()+"\n");
+        }
     }
 
     @FXML
