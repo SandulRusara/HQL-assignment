@@ -49,5 +49,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <JFXButton layoutX="28.0" layoutY="170.0" onAction="#btn8OnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: white;" text="Q.09">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="164.0" layoutY="170.0" onAction="#btn8OnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: white;" text="Q.10">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
